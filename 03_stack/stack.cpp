@@ -15,7 +15,7 @@ void Stack::push(int element) {
     else {
         HEAD++ ;
         if ( useList ) {
-            linkedList.add( element ) ;
+            linkedList.insertFront(element) ;
         }
         else {
             int* elementAddress = elements + ( HEAD * sizeof( int ) ) ;

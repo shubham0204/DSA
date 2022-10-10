@@ -5,7 +5,7 @@ LinkedList::~LinkedList(){
     clear() ;
 }
 
-void LinkedList::add( int element ) {
+void LinkedList::insertFront(int element ) {
     if ( numElements == 0 ) {
         // If the list was empty, initialize START and HEAD
         START = new( Node ) ;
@@ -20,6 +20,34 @@ void LinkedList::add( int element ) {
         headNode -> pointerToNext = nextNode ;
         HEAD = nextNode ;
     }
+    numElements += 1 ;
+}
+
+void LinkedList::insertBack(int element) {
+    if ( numElements == 0 ) {
+        START = new( Node ) ;
+        START -> value = element ;
+        HEAD = START;
+    }
+    else {
+        Node* headNode = START ;
+        Node* nextNode = new( Node ) ;
+        nextNode -> value = element ;
+        nextNode -> pointerToNext = headNode ;
+        START = nextNode ;
+    }
+    numElements += 1 ;
+}
+
+void LinkedList::insertAt(int element, int index) {
+    Node* currentNode = START ;
+    for ( int i = 0 ; i < index ; i ++ ) {
+        currentNode = currentNode -> pointerToNext ;
+    }
+    Node* newNode = new( Node ) ;
+    newNode -> value = element ;
+    newNode -> pointerToNext = currentNode -> pointerToNext ;
+    currentNode -> pointerToNext = newNode ;
     numElements += 1 ;
 }
 

@@ -1,6 +1,6 @@
 #include "circular_linkedlist.h"
 
-void CircularLinkedList::add( int element ) {
+void CircularLinkedList::insertFront(int element ) {
     if ( numElements == 0 ) {
         // If the list was empty, initialize START and HEAD
         START = new( Node ) ;

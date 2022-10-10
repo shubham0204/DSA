@@ -27,7 +27,9 @@ public:
     LinkedList(){}
     ~LinkedList() ;
 
-    void add( int element ) ;
+    void insertFront(int element ) ;
+    void insertBack(int element) ;
+    void insertAt( int element , int index ) ;
     int get( int index ) ;
     void deleteByValue( int value ) ;
     void deleteByIndex( int index ) ;

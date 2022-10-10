@@ -8,7 +8,7 @@ class CircularLinkedList : public LinkedList {
 public:
 
     CircularLinkedList(){} ;
-    void add( int element ) ;
+    void insertFront(int element ) ;
 
 } ;
 
