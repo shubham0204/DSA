@@ -140,8 +140,9 @@ void LinkedList::clear() {
     // Delete all dynamically allocated nodes to free up memory
     Node* currentNode = START ;
     for ( int i = 0 ; i < numElements ; i ++ ) {
+        Node* nextNode = currentNode -> pointerToNext ;
         delete currentNode ;
-        currentNode = currentNode -> pointerToNext ;
+        currentNode = nextNode ;
     }
     numElements = 0 ;
     START = nullptr ;
