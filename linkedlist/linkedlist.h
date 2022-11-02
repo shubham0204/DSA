@@ -4,6 +4,7 @@
 #include <iostream>
 
 // LinkedList implementation
+template <class E>
 class LinkedList {
 
 protected:
@@ -11,7 +12,7 @@ protected:
     // Node structure
     struct Node {
         // Value that the node contains
-        int value ;
+        E value ;
         // Pointer to the next node in the list
         Node* pointerToNext = nullptr;
     } ;
@@ -27,11 +28,11 @@ public:
     LinkedList(){}
     ~LinkedList() ;
 
-    void insertFront(int element ) ;
-    void insertBack(int element) ;
-    void insertAt( int element , int index ) ;
-    int get( int index ) ;
-    void deleteByValue( int value ) ;
+    void insertFront(E element ) ;
+    void insertBack(E element) ;
+    void insertAt(E element , int index ) ;
+    E get( int index ) ;
+    void deleteByValue( E value ) ;
     void deleteByIndex( int index ) ;
     void print() ;
     void clear() ;

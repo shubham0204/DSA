@@ -1,11 +1,13 @@
 #include "linkedlist.h"
 
-LinkedList::~LinkedList(){
+template <class E>
+LinkedList<E>::~LinkedList() {
     // When this object is destructed, free all the nodes
     clear() ;
 }
 
-void LinkedList::insertFront(int element ) {
+template <class E>
+void LinkedList<E>::insertFront( E element ) {
     if ( numElements == 0 ) {
         // If the list was empty, initialize START and HEAD
         START = new( Node ) ;
@@ -23,7 +25,8 @@ void LinkedList::insertFront(int element ) {
     numElements += 1 ;
 }
 
-void LinkedList::insertBack(int element) {
+template <class E>
+void LinkedList<E>::insertBack(E element) {
     if ( numElements == 0 ) {
         START = new( Node ) ;
         START -> value = element ;
@@ -39,7 +42,8 @@ void LinkedList::insertBack(int element) {
     numElements += 1 ;
 }
 
-void LinkedList::insertAt(int element, int index) {
+template <class E>
+void LinkedList<E>::insertAt(E element, int index) {
     Node* currentNode = START ;
     for ( int i = 0 ; i < index ; i ++ ) {
         currentNode = currentNode -> pointerToNext ;
@@ -51,7 +55,8 @@ void LinkedList::insertAt(int element, int index) {
     numElements += 1 ;
 }
 
-int LinkedList::get( int index ) {
+template <class E>
+E LinkedList<E>::get( int index ) {
     Node* currentNode = START ;
     for ( int i = 0 ; i < numElements ; i ++ ) {
         if( index == i ) {
@@ -62,7 +67,8 @@ int LinkedList::get( int index ) {
     return -1 ;
 }
 
-void LinkedList::deleteByIndex( int index ) {
+template <class E>
+void LinkedList<E>::deleteByIndex( int index ) {
     // kth Node in the LinkedList
     Node* prevNode = START ;
 
@@ -95,7 +101,8 @@ void LinkedList::deleteByIndex( int index ) {
     }
 }
 
-void LinkedList::deleteByValue( int value ) {
+template <class E>
+void LinkedList<E>::deleteByValue( E value ) {
     // kth Node in the LinkedList
     Node* prevNode = START ;
 
@@ -128,7 +135,8 @@ void LinkedList::deleteByValue( int value ) {
     }
 }
 
-void LinkedList::print() {
+template <class E>
+void LinkedList<E>::print() {
     Node* currentNode = START ;
     for ( int i = 0 ; i < numElements ; i ++ ) {
         std::cout << currentNode -> value << std::endl ;
@@ -136,7 +144,8 @@ void LinkedList::print() {
     }
 }
 
-void LinkedList::clear() {
+template <class E>
+void LinkedList<E>::clear() {
     // Delete all dynamically allocated nodes to free up memory
     Node* currentNode = START ;
     for ( int i = 0 ; i < numElements ; i ++ ) {

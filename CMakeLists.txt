@@ -7,18 +7,19 @@ add_executable(
         DSA
         main.cpp
         # LinkedList
-        02_linkedlist/linkedlist.h
-        02_linkedlist/linkedlist.cpp
-        02_linkedlist/circular_linkedlist.h
-        02_linkedlist/circular_linkedlist.cpp
-        02_linkedlist/doubly_linkedlist.h
-        02_linkedlist/doubly_linkedlist.cpp
+        linkedlist/linkedlist.h
+        linkedlist/linkedlist.cpp
+        linkedlist/circular_linkedlist.h
+        linkedlist/circular_linkedlist.cpp
+        linkedlist/doubly_linkedlist.h
+        linkedlist/doubly_linkedlist.cpp
         # Stack
-        03_stack/stack.h
-        03_stack/stack.cpp
+        stack/stack.h
+        stack/stack.cpp
         # Sorting Algorithms
-        sorting_algorithms/sorting_algorithm.h
-        sorting_algorithms/selection_sort.h
+        sorting/sorting_algorithm.h
+        sorting/selection_sort.h
+        sorting/selection_sort.cpp
         # Polynomials
         # polynomials/polynomial.h
         # polynomials/polynomial.cpp

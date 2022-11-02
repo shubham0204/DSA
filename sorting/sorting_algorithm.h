@@ -1,9 +1,10 @@
 
+template <class E>
 class SortingAlgorithm {
 
     public: 
 
     SortingAlgorithm() ; 
-    int* sort( int* array , int size ) ;
+    void sort( E*& array , int size ) ;
 
 } ; 

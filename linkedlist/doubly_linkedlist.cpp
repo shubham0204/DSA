@@ -1,7 +1,8 @@
 #include "doubly_linkedlist.h"
 #include <iostream>
 
-void DoublyLinkedList::insertFront(int element) {
+template <class E>
+void DoublyLinkedList<E>::insertFront(int element) {
     if ( numElements == 0 ) {
         HEAD_FRONT = new( Node ) ;
         HEAD_FRONT -> value = element ;
@@ -18,7 +19,8 @@ void DoublyLinkedList::insertFront(int element) {
     numElements += 1 ;
 }
 
-void DoublyLinkedList::insertBack(int element) {
+template <class E>
+void DoublyLinkedList<E>::insertBack(E element) {
     if ( numElements == 0 ) {
         HEAD_FRONT = new( Node ) ;
         HEAD_FRONT -> value = element ;
@@ -35,7 +37,8 @@ void DoublyLinkedList::insertBack(int element) {
     numElements += 1 ;
 }
 
-void DoublyLinkedList::print() {
+template <class E>
+void DoublyLinkedList<E>::print() {
     Node* currentNode = HEAD_BACK ;
     for ( int i = 0 ; i < numElements ; i ++ ) {
         std::cout << currentNode -> value << std::endl ;
@@ -43,7 +46,8 @@ void DoublyLinkedList::print() {
     }
 }
 
-DoublyLinkedList::DoublyLinkedList() {
+template <class E>
+DoublyLinkedList<E>::DoublyLinkedList() {
     HEAD_FRONT = nullptr ;
     HEAD_BACK = nullptr ;
     numElements = 0 ;

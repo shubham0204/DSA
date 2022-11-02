@@ -1,8 +1,7 @@
 #ifndef DSA_DOUBLY_LINKEDLIST_H
 #define DSA_DOUBLY_LINKEDLIST_H
 
-#include "linkedlist.h"
-
+template <class E>
 class DoublyLinkedList {
 
 private:
@@ -10,7 +9,7 @@ private:
     // Node structure
     struct Node {
         // Value that the node contains
-        int value ;
+        E value ;
         // Pointer to the next node in the list
         Node* pointerToNext = nullptr;
         Node* pointerToPrev = nullptr ;
@@ -23,8 +22,8 @@ private:
 public:
 
     DoublyLinkedList() ;
-    void insertFront( int element ) ;
-    void insertBack( int element ) ;
+    void insertFront( E element ) ;
+    void insertBack( E element ) ;
     void print() ;
 
 };

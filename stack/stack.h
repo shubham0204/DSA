@@ -1,21 +1,22 @@
 #include <iostream>
 #include "../02_linkedlist/linkedlist.h"
 
+template <class E>
 class Stack {
 
 private:
-    int HEAD ;
+    E* HEAD ;
     int size ;
     bool useList ;
 
     int* elements;
-    LinkedList linkedList ;
+    LinkedList<E> linkedList ;
 
 public:
 
     Stack( int initSize , bool useLinkedList = true ) ;
 
-    void push( int element ) ;
+    void push( E element ) ;
     int pop() ;
 
 };
