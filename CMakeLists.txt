@@ -19,6 +19,9 @@ add_executable(
         # Sorting Algorithms
         sorting_algorithms.cpp
 
+        # Searching Algorithms
+        searching_algorithms.cpp
+
         # Polynomials
         # polynomials/polynomial.h
         # polynomials/polynomial.cpp

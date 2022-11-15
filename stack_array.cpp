@@ -7,12 +7,11 @@ class Stack {
 private:
     E* HEAD ;
     int size ;
-
-    int* elements;
+    E* elements;
 
 public:
 
-    Stack( int initSize ) ;
+    Stack( int capacity ) ;
 
     void push( E element ) ;
     E pop() ;
@@ -20,10 +19,10 @@ public:
 };
 
 template <class E>
-Stack<E>::Stack(int initSize ) {
-    size = initSize ;
+Stack<E>::Stack( int capacity ) {
+    size = capacity ;
     HEAD = -1 ;
-    elements = new int[ size ]  ;
+    elements = new E[ size ]  ;
 }
 
 template <class E>
@@ -33,7 +32,7 @@ void Stack<E>::push(E element) {
     }
     else {
         HEAD++ ;
-        int* elementAddress = elements + ( HEAD * sizeof( int ) ) ;
+        int* elementAddress = elements + HEAD ;
         elementAddress = &element ;
     }
 }
