@@ -1,0 +1,3 @@
+- Added documentation for `SortingAlgorithms::bubbleSort`
+- Added implementation of `SortingAlgorithms::countingSort`
+- Included GIFs for sorting algorithms (from Wikipedia) in `README.md`

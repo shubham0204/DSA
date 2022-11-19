@@ -24,7 +24,8 @@ public:
     static void insertionSort( E* array , int size ) ;
     static void shellSort( E* array , int size ) ;
     static void quickSort( E* array , int size ) ;
-    static void countingSort( E* array , int size ) ;
+
+    static int* countingSort( const int* array , int size ) ;
     static void radixSort( E* array , int size ) ;
 
 private:
@@ -34,9 +35,11 @@ private:
 
 } ;
 
+
 /*
- * Implement the selection sort algorithm
- * In each kth pass, we determine the k-smallest element and place it at the (k - 1)th index
+ * Implement the bubble sort algorithm
+ * The algorithm performs swaps of adjacent elements until the largest element is "bubbled" or "shifted"
+ * to the rightmost position in each pass.
  *
  * Properties:
  * - comparison-based
@@ -45,8 +48,8 @@ private:
  * - for internal sorting only.
  *
  * Time and Space Complexity:
- * - Worst and average-case time complexity: O( N^2 ) comparisons, O( N ) swaps
- * - Best case time complexity: O( N^2 ) comparisons, O( 1 ) swaps
+ * - Worst and average-case time complexity: O( N^2 ) comparisons, O( N^2 ) swaps
+ * - Best case time complexity: O( N ) comparisons, O( 1 ) swaps
  * - Space Complexity: O( 1 ) always
  */
 template<class E>
@@ -66,6 +69,7 @@ void SortingAlgorithms<E>::bubbleSort(E *array, int size) {
         }
     }
 }
+
 
 /*
  * Implement the selection sort algorithm
@@ -99,20 +103,22 @@ void SortingAlgorithms<E>::selectionSort( E* array, int size) {
     }
 }
 
+
 /*
  * Implement the insertion sort algorithm
- * TODO: Edit description for insertion sort
- * In each kth iteration, we determine the k-largest element and place it at the (n - k)th index
+ * We iterate through element ( say the kth element ) and place it in its correct position in the array,
+ * that is already swept ( i.e. the subarray from [0 , k - 1] ). It is most efficient than selection sort
+ * and bubble sort for arrays that are nearly sorted.
  *
  * Properties:
  * - comparison-based
  * - in-place
  * - stable
- * - for internal sorting only.
+ * - online: It can sort array elements as it receives newer elements.
  *
  * Time and Space Complexity:
- * - Worst and average-case time complexity: O( N^2 )
- * - Best case time complexity: O( N )
+ * - Worst and average-case time complexity: O( N^2 ) comparisons and swaps
+ * - Best case time complexity: O( N ) comparisons, O( 1 ) swaps
  * - Space Complexity: O( 1 ) always
  */
 template <class E>
@@ -127,6 +133,7 @@ void SortingAlgorithms<E>::insertionSort( E* array , int size ){
         }
     }
 }
+
 
 /*
  * Implement the shell sort algorithm
@@ -181,9 +188,6 @@ template <class E>
 void SortingAlgorithms<E>::quickSort( E* array , int size ) {
     quickSortRecursive( array , 0 , size - 1 ) ;
 }
-
-
-
 template <class E>
 void SortingAlgorithms<E>::quickSortRecursive( E* array , int lower , int upper ) {
     if( lower < upper && lower >= 0 && upper >= 0 ) {
@@ -192,8 +196,6 @@ void SortingAlgorithms<E>::quickSortRecursive( E* array , int lower , int upper 
         quickSortRecursive( array , partition + 1 , upper ) ;
     }
 }
-
-
 template <class E>
 int SortingAlgorithms<E>::quickSortPartition( E *array, int lower , int upper ){
     int pivotIndex = std::floor( ( lower + upper ) / 2 ) ;
@@ -213,6 +215,54 @@ int SortingAlgorithms<E>::quickSortPartition( E *array, int lower , int upper ){
         *( array + j ) = temp ;
     }
 }
+
+
+/*
+ * Implement the quick sort algorithm
+ * TODO: Edit description for counting sort
+ * In each kth iteration, we determine the k-largest element and place it at the (n - k)th index
+ *
+ * Properties:
+ * - non comparison-based
+ * - in-place
+ * - stable
+ * - for internal sorting only.
+ *
+ * Time and Space Complexity:
+ * - Worst and average-case time complexity: O( N^2 )
+ * - Best case time complexity: O( N )
+ * - Space Complexity: O( 1 ) always
+ */
+template <class E>
+int* SortingAlgorithms<E>::countingSort( const int* array , int size ) {
+    int maxElement = 0 ;
+    for( int i = 0 ; i < size ; i++ ) {
+        if( *( array + i ) > maxElement ) {
+            maxElement = *( array + i ) ;
+        }
+    }
+
+    int frequencies[ maxElement + 1 ] ;
+    for( int i = 0 ; i < size ; i++ ) {
+        frequencies[ *( array + i ) ]++ ;
+    }
+
+    int cumFrequencies[ maxElement + 1 ] ;
+    cumFrequencies[ 0 ] = frequencies[ 0 ] ;
+    for( int i = 1 ; i < maxElement + 1 ; i++ ) {
+        cumFrequencies[ i ] = frequencies[ i ] + cumFrequencies[ i - 1 ] ;
+    }
+
+    int output[ size ] ;
+    for( int i = size - 1 ; i > -1 ; i-- ) {
+        int element = *( array + i ) ;
+        cumFrequencies[ element ]-- ;
+        output[ cumFrequencies[element] ] = element ;
+    }
+
+    return &output[0] ;
+}
+
 
 
 
