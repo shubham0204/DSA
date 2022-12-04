@@ -1,3 +1,3 @@
-- Added documentation for `SortingAlgorithms::bubbleSort`
-- Added implementation of `SortingAlgorithms::countingSort`
-- Included GIFs for sorting algorithms (from Wikipedia) in `README.md`
+- Added documentation for `linkedlist_singly.h`
+- Changed source files to header files, as templates need to 
+be defined in the header itself.

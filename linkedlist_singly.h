@@ -1,44 +1,50 @@
+#ifndef DSA_LINKEDLIST_SINGLY_H
+#define DSA_LINKEDLIST_SINGLY_H
 #include <iostream>
-
-// LinkedList implementation
+/*
+ * Implementation of a simple Linked List
+ * -> Linked List is a linear data structure similar to an array, but elements are not placed
+ * in consecutive memory locations and has NUMA.
+ */
 template <class E>
 class LinkedList {
 
-    // Node structure
     struct Node {
-        // Value that the node contains
+        // A structure that holds the value of the element E and the pointer that stores the
+        // address of the next element
         E value ;
-        // Pointer to the next node in the list
         Node* pointerToNext = nullptr;
     } ;
-
-    // Pointer to Node representing the start of the list
-    Node* START ;
-    // Pointer to Node representing the last element of the list
-    Node* HEAD ;
+    Node* START ; // Pointer to Node representing the start of the list
+    Node* HEAD ;  // Pointer to Node representing the last element of the list
     int numElements = 0 ;
 
 public:
-
-    LinkedList(){}
+    LinkedList() = default;
     ~LinkedList() ;
-
-    void insertFront(E element ) ;
-    void insertBack(E element) ;
-    void insertAt(E element , int index ) ;
-    E get( int index ) ;
-    void deleteByValue( E value ) ;
-    void deleteByIndex( int index ) ;
-    void print() ;
-    void clear() ;
+    void insertFront(E element ) ; // Add element after HEAD
+    void insertBack(E element) ;   // Add element before START
+    void insertAt(E element , int index ) ; // Add element in between the list at `index`
+    E get( int index ) ; // Retrieve the element at `index` from the linkedlist
+    void deleteByValue( E value ) ;    // Deletes the element by checking its value
+    void deleteByIndex( int index ) ;  // Deletes the element by checking its index
+    void print() ;  // Print the linkedlist
+    void clear() ;  // Delete all nodes from the linkedlist
 } ;
 
+/*
+ * In the destructor, call `clear` method that deletes all `Node` objects
+ * which were allocated memory dynamically
+ */
 template <class E>
 LinkedList<E>::~LinkedList() {
     // When this object is destructed, free all the nodes
     clear() ;
 }
 
+/*
+ * Add the element after HEAD. It is a constant time operation.
+ */
 template <class E>
 void LinkedList<E>::insertFront( E element ) {
     if ( numElements == 0 ) {
@@ -58,6 +64,9 @@ void LinkedList<E>::insertFront( E element ) {
     numElements += 1 ;
 }
 
+/*
+ * Add the element before START. It is a constant time operation.
+ */
 template <class E>
 void LinkedList<E>::insertBack(E element) {
     if ( numElements == 0 ) {
@@ -75,6 +84,9 @@ void LinkedList<E>::insertBack(E element) {
     numElements += 1 ;
 }
 
+/*
+ * Add element E at `index`. It is a constant time operation.
+ */
 template <class E>
 void LinkedList<E>::insertAt(E element, int index) {
     Node* currentNode = START ;
@@ -88,6 +100,9 @@ void LinkedList<E>::insertAt(E element, int index) {
     numElements += 1 ;
 }
 
+/*/
+ * Retrieves the value of the node at `index`. This is a O( N ) operation as it includes list traversal.
+ */
 template <class E>
 E LinkedList<E>::get( int index ) {
     Node* currentNode = START ;
@@ -100,14 +115,15 @@ E LinkedList<E>::get( int index ) {
     return -1 ;
 }
 
+/*
+ * Deletes the node present at `index`. It is a O( N ) operation as it includes list traversal.
+ */
 template <class E>
 void LinkedList<E>::deleteByIndex( int index ) {
     // kth Node in the LinkedList
     Node* prevNode = START ;
-
     // (k+1)th Node in the LinkedList
     Node* currentNode = START ;
-
     for ( int i = 0 ; i < numElements ; i ++ ) {
         // Checking if value == currentNode's value
         if ( i == index ) {
@@ -134,14 +150,15 @@ void LinkedList<E>::deleteByIndex( int index ) {
     }
 }
 
+/*
+ * Deletes the node with given `value`. It is a O( N ) operation as it includes list traversal.
+ */
 template <class E>
 void LinkedList<E>::deleteByValue( E value ) {
     // kth Node in the LinkedList
     Node* prevNode = START ;
-
     // (k+1)th Node in the LinkedList
     Node* currentNode = START ;
-
     for ( int i = 0 ; i < numElements ; i ++ ) {
         // Checking if value == currentNode's value
         if ( (currentNode -> value) == value ) {
@@ -168,6 +185,9 @@ void LinkedList<E>::deleteByValue( E value ) {
     }
 }
 
+/*
+ * Print all elements of the list. It is a O( N ) operation as we're travelling the list.
+ */
 template <class E>
 void LinkedList<E>::print() {
     Node* currentNode = START ;
@@ -192,4 +212,4 @@ void LinkedList<E>::clear() {
 }
 
 
-
+#endif //DSA_LINKEDLIST_SINGLY_H

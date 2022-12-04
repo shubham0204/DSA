@@ -5,6 +5,7 @@
 ## Sorting Algorithms
 
 ### Bubble Sort
+👉 [`SortingAlgorithms::bubbleSort`](https://github.com/shubham0204/DSA/blob/DSA/sorting_algorithms.cpp#L56)
 
 ![](https://upload.wikimedia.org/wikipedia/commons/c/c8/Bubble-sort-example-300px.gif)
 > Source: [Bubble Sort - Wikipedia](https://en.wikipedia.org/wiki/Bubble_sort)
@@ -27,6 +28,7 @@ Time and Space Complexity:
 
 
 ### Selection Sort
+👉 [`SortingAlgorithms::selectionSort`](https://github.com/shubham0204/DSA/blob/DSA/sorting_algorithms.cpp#L90)
 
 ![](https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif)
 > Source: [Insertion Sort - Wikipedia](https://en.wikipedia.org/wiki/Selection_sort)
@@ -46,6 +48,7 @@ Time and Space Complexity:
 - Space Complexity: `O( 1 )` always
 
 ### Insertion Sort
+👉 [`SortingAlgorithms::insertionSort`](https://github.com/shubham0204/DSA/blob/DSA/sorting_algorithms.cpp#L125)
 
 ![](https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif)
 > Source: [Insertion Sort - Wikipedia](https://en.wikipedia.org/wiki/Insertion_sort)

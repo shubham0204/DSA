@@ -1,3 +1,5 @@
+#ifndef DSA_SEARCHING_ALGORITHMS_H
+#define DSA_SEARCHING_ALGORITHMS_H
 
 /*
  *
@@ -12,5 +14,6 @@ public:
     static void binarySearch( E* array , int size , E key ) ;
     static void fibonacciSearch( E* array , int size , E key ) ;
 
-
 };
+
+#endif //DSA_SEARCHING_ALGORITHMS_H

@@ -1,4 +1,7 @@
+#ifndef DSA_SORTING_ALGORITHMS_H
+#define DSA_SORTING_ALGORITHMS_H
 #include <cmath>
+
 /*
 This class contains various sorting algorithms that operate on generic data types
 The following algorithms are implemented:
@@ -28,13 +31,16 @@ public:
     static int* countingSort( const int* array , int size ) ;
     static void radixSort( E* array , int size ) ;
 
+    static void heapSort( E* array , int size ) ;
+    static void mergeSort( E* array , int size ) ;
+    static void bucketSort( E* array , int size ) ;
+
+
 private:
     static void quickSortRecursive( E* array , int lower , int upper ) ;
     static int quickSortPartition( E* array , int lower , int upper ) ;
 
-
 } ;
-
 
 /*
  * Implement the bubble sort algorithm
@@ -218,7 +224,7 @@ int SortingAlgorithms<E>::quickSortPartition( E *array, int lower , int upper ){
 
 
 /*
- * Implement the quick sort algorithm
+ * Implement the Counting Sort algorithm
  * TODO: Edit description for counting sort
  * In each kth iteration, we determine the k-largest element and place it at the (n - k)th index
  *
@@ -263,9 +269,4 @@ int* SortingAlgorithms<E>::countingSort( const int* array , int size ) {
     return &output[0] ;
 }
 
-
-
-
-
-
-
+#endif //DSA_SORTING_ALGORITHMS_H

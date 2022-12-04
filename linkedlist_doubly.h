@@ -1,4 +1,5 @@
-#include <iostream>
+#ifndef DSA_LINKEDLIST_DOUBLY_H
+#define DSA_LINKEDLIST_DOUBLY_H
 
 template <class E>
 class DoublyLinkedList {
@@ -23,7 +24,12 @@ public:
     DoublyLinkedList() ;
     ~DoublyLinkedList() ;
     void insertFront( E element ) ;
+    void insertAt( E element , int index ) ;
     void insertBack( E element ) ;
+
+    void deleteByValue( E value ) ;
+    void deleteByIndex( int index ) ;
+
     void printForward() ;
     void printBackward() ;
     void clear() ;
@@ -109,3 +115,20 @@ void DoublyLinkedList<E>::clear() {
     HEAD_FRONT = nullptr ;
     HEAD_BACK = nullptr ;
 }
+
+template<class E>
+void DoublyLinkedList<E>::insertAt(E element, int index) {
+
+}
+
+template<class E>
+void DoublyLinkedList<E>::deleteByValue(E value) {
+
+}
+
+template<class E>
+void DoublyLinkedList<E>::deleteByIndex(int index) {
+
+}
+
+#endif //DSA_LINKEDLIST_DOUBLY_H

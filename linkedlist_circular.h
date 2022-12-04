@@ -1,3 +1,6 @@
+#ifndef DSA_LINKEDLIST_CIRCULAR_H
+#define DSA_LINKEDLIST_CIRCULAR_H
+
 // CircularLinkedList Implementation
 template <class E>
 class CircularLinkedList {
@@ -47,3 +50,5 @@ void CircularLinkedList<E>::insertFront( E element ) {
     }
     numElements += 1 ;
 }
+
+#endif //DSA_LINKEDLIST_CIRCULAR_H
