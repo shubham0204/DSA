@@ -2,8 +2,9 @@
 #define DSA_STACK_ARRAY_H
 #include <iostream>
 
+
 template <class E>
-class Stack {
+class StackArray {
 
 private:
     int HEAD_INDEX;
@@ -13,11 +14,11 @@ private:
 
 public:
 
-    Stack(int capacity) ;
-    ~Stack() ;
+    explicit StackArray(int capacity) ;
+    ~StackArray() ;
     void push(E element);
     void print() ;
-    E pop() ;
+    void pop() ;
     int getNumElements();
     E head() ;
     bool isEmpty() ;
@@ -27,74 +28,73 @@ public:
 };
 
 template <class E>
-Stack<E>::Stack( int capacity ) {
-    // Initialize array
+StackArray<E>::StackArray(int capacity ) {
     this -> numElements = 0;
     this -> capacity = capacity;
-    elements = new E[capacity];
-    HEAD_INDEX = -1 ;
+    this -> elements = new E[capacity];
+    this -> numElements = 0 ;
+    this -> HEAD_INDEX = -1 ;
 }
 
 
 template <class E>
-void Stack<E>::push(E element) {
-    if( numElements != capacity ) {
-        *(elements + ++HEAD_INDEX) = element;
-        numElements += 1;
+void StackArray<E>::push(E element) {
+    if( !isFull() ) {
+        elements[ ++HEAD_INDEX ] = element;
+        numElements++ ;
     }
     else {
-        std::cout << "Stack is full." << "\n" ;
+        std::cout << "StackArray is full." << "\n" ;
     }
 }
 
 template <class E>
-E Stack<E>::pop() {
-    if (numElements > 0) {
-        HEAD_INDEX -= 1;
-        numElements -= 1;
-        return *(elements + HEAD_INDEX + 1) ;
+void StackArray<E>::pop() {
+    if ( !isEmpty() ) {
+        HEAD_INDEX-- ;
+        numElements-- ;
     }
     else {
-        return NULL ;
+        std::cout << "StackArray is empty." << "\n" ;
     }
 }
 
 template <class E>
-void Stack<E>::print() {
-    for (int i = numElements - 1; i > -1; i--) {
-        std::cout << *(elements + i) << "\n";
+void StackArray<E>::print() {
+    for (int i = 0; i < numElements ; i++ ) {
+        std::cout << elements[ i ] << "\n";
     }
 }
 
 template<class E>
-int Stack<E>::getNumElements() {
+int StackArray<E>::getNumElements() {
     return numElements ;
 }
 
 template<class E>
-E Stack<E>::head() {
-    return *( elements + HEAD_INDEX ) ;
+E StackArray<E>::head() {
+    return elements[ HEAD_INDEX ];
 }
 
 template<class E>
-Stack<E>::~Stack() {
+StackArray<E>::~StackArray() {
     delete elements ;
 }
 
 template<class E>
-bool Stack<E>::isEmpty() {
-    return HEAD_INDEX == -1;
+bool StackArray<E>::isEmpty() {
+    return numElements == 0;
 }
 
 template<class E>
-bool Stack<E>::isFull() {
-    return HEAD_INDEX == capacity - 1;
+bool StackArray<E>::isFull() {
+    return numElements == capacity;
 }
 
 template<class E>
-bool Stack<E>::contains( E element ) {
+bool StackArray<E>::contains(E element ) {
     for (int i = numElements - 1; i > -1; i--) {
-        if( *(elements + i) == element ) {
+        if( elements[i] == element ) {
             return true ;
         }
     }

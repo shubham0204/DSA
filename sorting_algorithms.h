@@ -33,7 +33,7 @@ public:
 
     static void heapSort( E* array , int size ) ;
     static void mergeSort( E* array , int size ) ;
-    static void bucketSort( E* array , int size ) ;
+    static void timmSort( E* array , int size ) ;
 
 
 private:

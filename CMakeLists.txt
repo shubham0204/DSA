@@ -8,23 +8,22 @@ set( SOURCES
         linkedlist_singly.h
         linkedlist_circular.h
         linkedlist_doubly.h
+
         stack_array.h
         stack_linkedlist.h
+
         sorting_algorithms.h
         searching_algorithms.h
-        # includes/expression_infix2postfix.h
 
-        # linkedlist_singly.cpp
-        # linkedlist_circular.cpp
-        # linkedlist_doubly.cpp
-        # stack_array.cpp
-        # stack_linkedlist.cpp
-        # sorting_algorithms.cpp
-        # searching_algorithms.cpp
-        # expression_infix2postfix.cpp
+        sparse_matrix_array.cpp
+
+        expression_valid_parenthesis.cpp
+
+        queue_circular.h
+        queue_priority.h
+
 )
 
-
-add_executable( DSA ${SOURCES} )
+add_library( DSA SHARED ${SOURCES} )
 
 
